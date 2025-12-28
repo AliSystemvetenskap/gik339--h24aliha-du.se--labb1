@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GIK339 Labb 1</title>
+
+    <!--
+    Reflektion uppgift 1:
+    1) Placering av <script>-taggen spelar roll eftersom webbläsaren läser HTML uppifrån och ner.
+       Om scriptet kör innan HTML-elementen har laddats kan JS försöka använda element som inte finns än.
+       Lägger man script längst ner i <body> så hinner HTML laddas först.
+    2) defer gör att scriptet laddas ner parallellt med HTML, men körs först när HTML är färdigparsat.
+       Det gör att man kan ha <script defer> i <head> utan att det “stoppar” sidans laddning.
+    -->
+  </head>
+  <body>
+    <h1>GIK339 – Labb 1</h1>
+
+    <script defer src="./script.js"></script>
+  </body>
+</html>
+  
