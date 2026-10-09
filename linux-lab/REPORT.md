@@ -1,273 +1,178 @@
----
-title: "Linux Laboratory – Part 1 & Part 2"
-subtitle: "GIK2NV – Data storage and management technologies"
-date: "[DATE]"
-author:
-  - "[Name 1] – [DU-ID]"
-  - "[Name 2] – [DU-ID]"
-  - "[Name 3] – [DU-ID]"
----
+::: {.cover}
+# Linux Laboratory
 
-**Video recording:** [YouTube link]
+## Part 1 & Part 2
 
-# Part 1 – User Management
+**GIK2NV – Data storage and management technologies**
 
-All commands are run as root (`sudo`). The full script is `part1_setup.sh`.
+Date: [DATE]
 
-Naming used:
+| Name | DU-ID |
+|---|---|
+| [Name 1] | [DU-ID] |
+| [Name 2] | [DU-ID] |
+| [Name 3] | [DU-ID] |
 
-| Department | Group | Admin | Users |
+Video presentation: [YouTube link]
+:::
+
+# Laboratory environment
+
+The lab was carried out on **Ubuntu 24.04 LTS** (hostname `linux-lab`). All administrative commands are run as `root` (on a normal user account, put `sudo` in front of each command). The users and groups below were used in Part 1:
+
+| Department | Group | Administrator | Users |
 |---|---|---|---|
 | Engineering | Engineering | eng_admin | eng_user1, eng_user2 |
 | Sales | Sales | sales_admin | sales_user1, sales_user2 |
 | HR | HR | hr_admin | hr_user1, hr_user2 |
 
-## 1. Create a directory at the root (/) for each department
+# Part 1 – User Management
 
-We change to the root of the file system and create one directory per department.
+## Task 1: Create a directory at the root (/) for each department
 
-```
-cd /
-sudo mkdir /Engineering /Sales /HR
-```
+We go to the root of the file system with `cd /` and use `mkdir` to create one directory per department, each named after its department. `ls -ld` verifies that the three directories exist directly under `/`.
 
-Verification: `ls -ld /Engineering /Sales /HR`
+![](screenshots/p1_1.png)
 
-[SCREENSHOT]
+## Task 2: Create a group for each department
 
-## 2. Create a group for each department
+`groupadd` creates one group per department, each named after its department. `getent group` verifies that the groups exist in `/etc/group`.
 
-```
-sudo groupadd Engineering
-sudo groupadd Sales
-sudo groupadd HR
-```
+![](screenshots/p1_2.png)
 
-Verification: `getent group Engineering Sales HR`
+## Task 3: Create an administrative user for each department
 
-```
-Engineering:x:30002:
-Sales:x:30003:
-HR:x:30004:
-```
+`useradd` creates the three administrators:
 
-[SCREENSHOT]
+- `-m` creates a home directory,
+- `-s /bin/bash` gives the user a **Bash login shell** (3a),
+- `-g <group>` sets the department group as the user's **primary group** (3b).
 
-## 3. Create an administrative user for each department
+`id` shows that the primary group (`gid`) is the department group, and `/etc/passwd` shows that the login shell is `/bin/bash`.
 
-`-m` creates a home directory, `-s /bin/bash` gives a Bash login shell (3a) and `-g` sets the department group as the user's **primary** group (3b).
+![](screenshots/p1_3.png)
 
-```
-sudo useradd -m -s /bin/bash -g Engineering eng_admin
-sudo useradd -m -s /bin/bash -g Sales sales_admin
-sudo useradd -m -s /bin/bash -g HR hr_admin
-```
+## Task 4: Create two additional users for each department
 
-Verification: `id eng_admin` and `getent passwd eng_admin`
+The same `useradd` options give each regular user a Bash login shell (4a) and the department group as primary group (4b). The output of `id` and `/etc/passwd` verifies this.
 
-```
-uid=30033(eng_admin) gid=30002(Engineering) groups=30002(Engineering)
-eng_admin:/bin/bash
-```
+![](screenshots/p1_4.png)
 
-[SCREENSHOT]
+## Task 5: Secure the department directories
 
-## 4. Create two additional users for each department
+### 5a – Owner is the department admin, group is the department group
 
-Same options as for the admins: Bash login shell (4a) and the department as primary group (4b).
+`chown user:group` sets both the owner and the group owner in a single command. `ls -ld` shows the new owner and group.
 
-```
-sudo useradd -m -s /bin/bash -g Engineering eng_user1
-sudo useradd -m -s /bin/bash -g Engineering eng_user2
-sudo useradd -m -s /bin/bash -g Sales sales_user1
-sudo useradd -m -s /bin/bash -g Sales sales_user2
-sudo useradd -m -s /bin/bash -g HR hr_user1
-sudo useradd -m -s /bin/bash -g HR hr_user2
-```
+![](screenshots/p1_5a.png)
 
-Verification: `id <user>` for every user, and `tail -9 /etc/passwd`
+### 5b–5e – Permissions
 
-```
-uid=30036(eng_user1) gid=30002(Engineering) groups=30002(Engineering)
-uid=30037(eng_user2) gid=30002(Engineering) groups=30002(Engineering)
-uid=30038(sales_user1) gid=30003(Sales) groups=30003(Sales)
-uid=30039(sales_user2) gid=30003(Sales) groups=30003(Sales)
-uid=30040(hr_user1) gid=30004(HR) groups=30004(HR)
-uid=30041(hr_user2) gid=30004(HR) groups=30004(HR)
-```
+All of the permission requirements are covered by one command, `chmod 1770`:
 
-[SCREENSHOT]
-
-## 5. Secure the department directories
-
-**5a.** The department admin is set as owner and the department group as group owner:
-
-```
-sudo chown eng_admin:Engineering /Engineering
-sudo chown sales_admin:Sales /Sales
-sudo chown hr_admin:HR /HR
-```
-
-**5b–5e.** Permissions are set with one command: `chmod 1770`
-
-| Digit | Meaning | Objective |
+| Digit | Meaning | Requirement |
 |---|---|---|
-| 1 | sticky bit – only a file's owner can delete it | 5c |
-| 7 | owner (admin) rwx – full access | 5b |
-| 7 | group (department users) rwx – full access | 5d |
-| 0 | others – no permissions at all | 5e |
+| **1** | Sticky bit: only the owner of a file can delete it | 5c |
+| **7** | Owner (department admin): read, write, execute (full access) | 5b, 5c |
+| **7** | Group (department users): read, write, execute (full access) | 5d |
+| **0** | Others: no permissions at all | 5e |
 
-```
-sudo chmod 1770 /Engineering /Sales /HR
-```
+In the `ls -ld` output, `drwxrwx--T` shows `rwx` for owner and group and `---` for others. The `T` at the end is the sticky bit.
 
-Verification: `ls -ld /Engineering /Sales /HR` – the `T` at the end shows the sticky bit.
+![](screenshots/p1_5b.png)
 
-```
-drwxrwx--T 2 eng_admin   Engineering 4096 /Engineering
-drwxrwx--T 2 hr_admin    HR          4096 /HR
-drwxrwx--T 2 sales_admin Sales       4096 /Sales
-```
+### Testing the directory permissions
 
-Tests:
+- The admin (5b) and a regular user (5d) can both create files in the department directory.
+- `eng_user2` cannot change or delete the file owned by `eng_user1`, but `eng_user1` can delete their own file. This shows the sticky bit works (5c).
+- Users from other departments (`sales_user1`, `hr_admin`) cannot list or write to a directory that is not theirs (5e).
 
-```
-# Department user can create files in their folder (5d)
-su - eng_user1 -c 'touch /Engineering/u1file && echo created'
-created
+![](screenshots/p1_5t.png)
 
-# Another user in the department cannot delete it (sticky bit, 5c)
-su - eng_user2 -c 'rm -f /Engineering/u1file'
-rm: cannot remove '/Engineering/u1file': Operation not permitted
+## Task 6: Create a document in each department directory
 
-# A user from another department has no access (5e)
-su - eng_user1 -c 'ls /Sales'
-ls: cannot open directory '/Sales': Permission denied
-```
+We create `confidential.txt` in each directory with `echo`, containing exactly one line of text (6b). `chown` gives the file the same ownership as its directory (6a). `chmod 640` sets the access (6c):
 
-[SCREENSHOT]
+| Digit | Who | Permission |
+|---|---|---|
+| **6** | Owner (department admin) | read + write: only the admin can modify the file |
+| **4** | Group (department users) | read only |
+| **0** | Others | no permissions |
 
-## 6. Create a document in each department directory
+![](screenshots/p1_6.png)
 
-**6b.** The file contains exactly one line:
+### Testing the file permissions
 
-```
-echo "This file contains confidential information for the department." > /Engineering/confidential.txt
-echo "This file contains confidential information for the department." > /Sales/confidential.txt
-echo "This file contains confidential information for the department." > /HR/confidential.txt
-```
+- A department user can read the file but gets *Permission denied* when trying to modify it.
+- The department admin can modify it.
+- Users from other departments cannot read it.
 
-**6a.** Same ownership as the directory:
-
-```
-sudo chown eng_admin:Engineering /Engineering/confidential.txt
-sudo chown sales_admin:Sales /Sales/confidential.txt
-sudo chown hr_admin:HR /HR/confidential.txt
-```
-
-**6c.** `chmod 640` – owner (admin) read + write, group read only, others nothing:
-
-```
-sudo chmod 640 /Engineering/confidential.txt /Sales/confidential.txt /HR/confidential.txt
-```
-
-Verification: `ls -l /Engineering /Sales /HR`
-
-```
--rw-r----- 1 eng_admin Engineering 64 confidential.txt
--rw-r----- 1 hr_admin HR 64 confidential.txt
--rw-r----- 1 sales_admin Sales 64 confidential.txt
-```
-
-Tests:
-
-```
-# Department user can read
-su - eng_user1 -c 'cat /Engineering/confidential.txt'
-This file contains confidential information for the department.
-
-# Department user cannot modify
-su - eng_user1 -c 'echo x >> /Engineering/confidential.txt'
--bash: /Engineering/confidential.txt: Permission denied
-
-# Admin can modify
-su - eng_admin -c 'echo "This file contains confidential information for the department." > /Engineering/confidential.txt && echo admin-write-ok'
-admin-write-ok
-
-# User from another department cannot read
-su - sales_user1 -c 'cat /Engineering/confidential.txt'
-cat: /Engineering/confidential.txt: Permission denied
-```
-
-[SCREENSHOT]
+![](screenshots/p1_6t.png)
 
 # Part 2 – User Management Script
 
 ## How the script works
 
-The script `usermgmt.sh` is interactive and does not hardcode any names – the administrator types in the group name, username and password when it runs. Step by step:
+The script `usermgmt.sh` is interactive and contains **no hardcoded usernames or group names**. The administrator types in the group name, username and password while it runs. The steps are in a logical order: the group must exist before the user (it becomes the user's primary group), and the user and group must exist before the directory can be given to them.
 
-0. **Root check** – the script stops with an error if it is not run as root, since all following commands need root.
-1. **(a) Create group** – a `while` loop asks for a group name. `getent group <name>` looks the name up; the special variable `$?` holds the exit code of the previous command (0 = found). If the group already exists an error is printed and the loop asks again. Otherwise `groupadd` creates it and `$?` is checked again to confirm success.
-2. **(b) Create user** – same loop pattern with `getent passwd <name>`. A unique name is created with `useradd -m -s /bin/bash -g <group> <user>`: Bash login shell and the new group as primary group.
-3. **(c) Password** – the password is read twice with `read -s` (hidden input). If empty or not matching, the admin tries again. It is set with `chpasswd`.
-4. **(d) Group membership** – `usermod -aG <group> <user>` also adds the user as a member of the group (listed in `/etc/group`).
-5. **(e) Directory** – `mkdir /<username>` creates a directory at the root with the same name as the user.
-6. **(f) Ownership** – `chown <user>:<group> /<username>`.
-7. **(g + h) Permissions** – `chmod 1770`: owner rwx, group rwx (full control), others none, plus the sticky bit so only a file's owner can delete it.
-8. **Summary** – prints `id`, the `/etc/passwd` entry and `ls -ld` of the directory as proof.
-9. **(i) Executable** – the script is made executable with `chmod +x usermgmt.sh` and run as `sudo ./usermgmt.sh`.
+The special variable **`$?`** holds the exit code of the previous command: `0` means success and anything else means failure. The script uses it after each important command to decide what to do next.
 
-Logical order matters: the group must exist before the user (because it is the user's primary group), and the user and group must exist before `chown` on the directory.
+0. **Root check.** The script exits with an error if it is not run as root, since every step below needs root privileges.
+1. **(a) Create a new group.** A `while true` loop asks for a group name with `read -p`. An empty name is rejected. `getent group <name>` looks the name up. If `$?` is `0` the group already exists, so an error is printed and the loop asks for another name. Otherwise `groupadd` creates the group, `$?` confirms it worked, and `break` leaves the loop.
+2. **(b) Create a new user.** The same loop pattern with `getent passwd <name>` rejects existing usernames. A unique user is created with `useradd -m -s /bin/bash -g <group> <user>`, which gives a Bash login shell and makes the new group the primary group.
+3. **(c) Create a password.** The password is read twice with `read -s`, so it is hidden while typing. An empty or mismatching password is rejected and the admin tries again. The password is set with `chpasswd`, which stores it as a hash in `/etc/shadow`.
+4. **(d) Group membership.** `usermod -aG <group> <user>` adds the user as a member of the group, so they are listed in `/etc/group` as well as having it as their primary group.
+5. **(e) Directory.** `mkdir /<username>` creates a directory at the root with the same name as the user. If this fails, the script stops with an error.
+6. **(f) Ownership.** `chown <user>:<group> /<username>`.
+7. **(g + h) Permissions.** `chmod 1770` gives full control to the owner (`7`) and the group (`7`) and nothing to others (`0`). The leading `1` is the sticky bit, which means only the owner of a file can delete it from the directory.
+8. **Summary.** Prints `id`, the `/etc/passwd` entry and `ls -ld` of the directory as proof.
+9. **(i) Executable.** The script is made executable with `chmod +x usermgmt.sh` and run as `./usermgmt.sh` (or `sudo ./usermgmt.sh`).
 
 ## Script implementation
 
-[SCREENSHOT of `cat usermgmt.sh` / the script in the editor]
+![](screenshots/p2_script_a.png)
+
+![](screenshots/p2_script_b.png)
 
 ## Testing
 
-Test run that covers every branch: an existing group (`HR`), an existing user (`eng_admin`), a password mismatch, and finally valid input.
+### (i) Making the script executable
 
-```
-$ ls -l usermgmt.sh
--rwxr-xr-x 1 root root ... usermgmt.sh          <- (i) executable
+Before `chmod +x`, the file has no `x` bits (`-rw-r--r--`). Afterwards it is executable (`-rwxr-xr-x`).
 
-$ sudo ./usermgmt.sh
-Enter a new group name: HR
-Error: group 'HR' already exists. Try another group name.
-Enter a new group name: Marketing
-Group 'Marketing' created.
-Enter a new username: eng_admin
-Error: user 'eng_admin' already exists. Try another username.
-Enter a new username: anna
-User 'anna' created.
-Enter a password for anna:
-Confirm password:
-Error: passwords do not match. Try again.
-Enter a password for anna:
-Confirm password:
-Password set for 'anna'.
-User 'anna' is a member of group 'Marketing'.
-Directory /anna created.
-Ownership and permissions set on /anna.
+![](screenshots/p2_exec.png)
 
-===== Summary =====
-uid=30042(anna) gid=30005(Marketing) groups=30005(Marketing)
-anna:x:30042:30005::/home/anna:/bin/bash
-drwxrwx--T 2 anna Marketing 4096 /anna
-```
+### Test 1: Duplicate group, duplicate user, wrong password, then valid input
 
-Extra verification:
+This run tests every error branch:
 
-```
-$ grep Marketing /etc/group            # (a, d)
-Marketing:x:30005:anna
+- **(a)** `HR` already exists, so the script reports an error and asks again. `Marketing` is accepted.
+- **(b)** `eng_admin` already exists, so the script reports an error. `anna` is accepted.
+- **(c)** The two passwords did not match the first time, so the script asks again. The second attempt matched. The password is hidden while typing.
+- **(d–h)** The rest of the script runs, and the summary shows the result.
 
-$ sudo grep anna /etc/shadow           # (c) password hash exists
-anna:$y$j9T$...
+![](screenshots/p2_run.png)
 
-$ su - anna -c 'touch /anna/test && ls -l /anna'   # (e, f, g)
--rw-r--r-- 1 anna Marketing 0 test
-```
+### Verification of Test 1
 
-[SCREENSHOTS]
+- `/etc/group` lists `anna` as a member of `Marketing` (a, d).
+- `id` and `/etc/passwd` show that the primary group is `Marketing` and the shell is `/bin/bash` (b).
+- `/etc/shadow` contains a password hash for `anna` (c).
+- `/anna` exists at the root (e), is owned by `anna:Marketing` (f) and has permissions `drwxrwx--T` (g, h).
+- `anna` can create files in it, and a user outside the group is denied access.
+
+![](screenshots/p2_verify.png)
+
+### Test 2: A second run with other names
+
+This run shows that the script accepts any names. It also tests an empty group name, and the group and user created in Test 1 are now rejected as duplicates.
+
+![](screenshots/p2_run2.png)
+
+![](screenshots/p2_verify2.png)
+
+# Conclusion
+
+**Part 1:** every department has a private directory owned by its administrator and group. All department members have full access, files can only be deleted by their owner, and other users have no access. Each directory has a confidential file that only the administrator can modify and that department members can read.
+
+**Part 2:** the script automates the same work for any group and user name. It validates input with `getent` and `$?` so duplicates are rejected, and it produces a correctly configured user and directory every time.
