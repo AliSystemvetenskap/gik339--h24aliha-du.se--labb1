@@ -1,6 +1,13 @@
 # Video script: Bilal, Ali, Merat, Hussein (about 10–12 minutes)
 
-Ali shares the Ubuntu window and types the commands. Each person **talks about their own section**, and if you're sitting together, each person can type their own commands too. Paste each command block, press Enter, and **wait for the output before talking about it**.
+**Ali shares his screen and pastes every command for the whole video.** Bilal, Merat and Hussein only talk; Ali also talks during his own section.
+
+How each block works:
+1. The speaker says what the next step does, then says **"Ali, run it"**.
+2. Ali pastes the block and presses Enter.
+3. The speaker explains the output on screen.
+
+Ali: keep this file open beside the Ubuntu window, or on your phone, so you can copy each block quickly.
 
 Before recording: run the reset commands (see "How to record") so the system starts empty, then run `sudo -i` so the prompt shows `root@Ali:...#`.
 
