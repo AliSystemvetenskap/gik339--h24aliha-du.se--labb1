@@ -9,11 +9,14 @@ Date: [DATE]
 
 | Name | DU-ID |
 |---|---|
-| [Name 1] | [DU-ID] |
-| [Name 2] | [DU-ID] |
-| [Name 3] | [DU-ID] |
+| Bilal [Last name] | [DU-ID] |
+| Ali [Last name] | [DU-ID] |
+| Merat [Last name] | [DU-ID] |
+| Hussein [Last name] | [DU-ID] |
 
 Video presentation: [YouTube link]
+
+**Video presentation, division of work:** Bilal – introduction and Part 1 tasks 1–3 · Ali – Part 1 tasks 4–5 · Merat – Part 1 task 6 and the Part 2 script code · Hussein – running and testing the Part 2 script.
 :::
 
 # Laboratory environment
