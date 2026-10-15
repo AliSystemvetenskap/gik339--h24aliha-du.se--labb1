@@ -1,21 +1,21 @@
 ---
-title: "Linux Lab – Enkelt videomanus"
+title: "Linux Lab – Simple Video Script"
 subtitle: "GIK2NV · Bilal, Ali, Merat, Hussein"
 ---
 
-# Så funkar det
+# How it works
 
-- **Ali** delar Ubuntu-fönstret och kör alla kommandon.
-- Den som pratar läser sin **"Say"**-text på engelska och säger **"Ali, run it"**.
-- Ali klistrar in blocket, och personen förklarar vad som syns.
-- Under varje block står **"Vad betyder det?"** på svenska, så att alla förstår vad de pratar om. Den texten läser ni **inte** upp.
+- **Ali** shares the Ubuntu window and runs all the commands.
+- The speaker reads their **"Say"** text and says **"Ali, run it"**.
+- Ali pastes the block, and the speaker explains what is on the screen.
+- **"What does it mean?"** under each block helps you understand what you are talking about. Do **not** read it out loud.
 
-| Ordning | Vem | Del |
+| Order | Who | Part |
 |---|---|---|
-| 1 | Bilal | Intro, mappar, grupper, admins |
-| 2 | Ali | Användare, rättigheter, test |
-| 3 | Merat | Hemlig fil, test, scriptet |
-| 4 | Hussein | Kör scriptet och testar |
+| 1 | Bilal | Intro, folders, groups, admins |
+| 2 | Ali | Users, permissions, test |
+| 3 | Merat | Secret file, test, the script |
+| 4 | Hussein | Runs and tests the script |
 
 # 1. BILAL
 
@@ -23,7 +23,7 @@ subtitle: "GIK2NV · Bilal, Ali, Merat, Hussein"
 
 **Say:** "Hi! We are Bilal, Ali, Merat and Hussein. This is our Linux lab. A company has three new departments: Engineering, Sales and HR. In Part 1 we set up folders, groups and users for them. In Part 2 we made a script that does this automatically."
 
-## Block 1: mappar
+## Block 1: folders
 
 **Say:** "First we make one folder for each department. Ali, run it."
 
@@ -33,11 +33,11 @@ mkdir /Engineering /Sales /HR
 ls -ld /Engineering /Sales /HR
 ```
 
-**Vad betyder det?** `cd /` går till roten, den översta mappen i Linux. `mkdir` skapar mappar. `ls -ld` visar mapparna så vi ser att de finns.
+**What does it mean?** `cd /` goes to the root, the top folder in Linux. `mkdir` makes folders. `ls -ld` shows the folders, so we can see they exist.
 
 **Say:** "Here you can see the three folders. They are in the root of the system."
 
-## Block 2: grupper
+## Block 2: groups
 
 **Say:** "Now we make one group for each department. Ali, run it."
 
@@ -48,11 +48,11 @@ groupadd HR
 getent group Engineering Sales HR
 ```
 
-**Vad betyder det?** En grupp är som ett "lag". Alla som jobbar på samma avdelning ska vara i samma grupp. `groupadd` skapar gruppen, och `getent group` visar att den finns.
+**What does it mean?** A group is like a "team". Everyone in the same department is in the same group. `groupadd` makes the group, and `getent group` shows that it exists.
 
 **Say:** "Here you can see the three groups were created."
 
-## Block 3: chefer (admins)
+## Block 3: bosses (admins)
 
 **Say:** "Now we make one boss, an admin, for each department. Ali, run it."
 
@@ -63,19 +63,19 @@ useradd -m -s /bin/bash -g HR hr_admin
 id eng_admin
 ```
 
-**Vad betyder det?** `useradd` skapar en användare.
+**What does it mean?** `useradd` makes a user.
 
-- `-m` ger användaren en egen hemmapp.
-- `-s /bin/bash` gör att användaren använder Bash när den loggar in.
-- `-g Engineering` gör Engineering till användarens huvudgrupp.
+- `-m` gives the user their own home folder.
+- `-s /bin/bash` means the user gets Bash when they log in.
+- `-g Engineering` makes Engineering the user's main (primary) group.
 
-`id` visar vilken grupp användaren har.
+`id` shows which group the user has.
 
 **Say:** "useradd makes a new user. -s /bin/bash gives the user a Bash shell. -g puts the user in the department group. Here you can see eng_admin is in the Engineering group. Now Ali takes over."
 
 # 2. ALI
 
-## Block 4: vanliga användare
+## Block 4: normal users
 
 **Say:** "Now we make two normal users for each department, the same way."
 
@@ -89,11 +89,11 @@ useradd -m -s /bin/bash -g HR hr_user2
 grep -E '_admin|_user' /etc/passwd
 ```
 
-**Vad betyder det?** Samma som förut, fast för vanliga anställda. `/etc/passwd` är listan över alla användare, och `grep` letar fram våra 9 användare.
+**What does it mean?** The same as before, but for normal employees. `/etc/passwd` is the list of all users, and `grep` finds our 9 users in it.
 
 **Say:** "Here are all nine users. They all end with /bin/bash, so they all have a Bash shell."
 
-## Block 5: rättigheter
+## Block 5: permissions
 
 **Say:** "Now we protect the folders."
 
@@ -105,14 +105,14 @@ chmod 1770 /Engineering /Sales /HR
 ls -ld /Engineering /Sales /HR
 ```
 
-**Vad betyder det?** `chown` bestämmer vem som äger mappen: chefen äger den, och avdelningens grupp hör till den. `chmod 1770` bestämmer vem som får göra vad:
+**What does it mean?** `chown` decides who owns the folder: the boss owns it, and the department group belongs to it. `chmod 1770` decides who can do what:
 
-- **1** = sticky bit: bara den som skapat en fil får ta bort den.
-- **7** = chefen får göra allt.
-- **7** = avdelningen får göra allt.
-- **0** = alla andra får ingenting.
+- **1** = sticky bit: only the person who made a file can delete it.
+- **7** = the boss can do everything.
+- **7** = the department can do everything.
+- **0** = everyone else can do nothing.
 
-I `drwxrwx--T` betyder `T` att sticky bit är på.
+In `drwxrwx--T`, the `T` means the sticky bit is on.
 
 **Say:** "chown makes the boss the owner of the folder. chmod 1770 sets the rules. The boss and the department can do everything. Everyone else can do nothing. The 1 is the sticky bit. It means only the person who made a file can delete it. You can see the T at the end. That is the sticky bit."
 
@@ -127,18 +127,18 @@ su - eng_user1 -c 'rm /Engineering/user1_file && echo "eng_user1: own file delet
 su - sales_user1 -c 'ls /Engineering'
 ```
 
-**Vad betyder det?** `su - användare -c '...'` kör ett kommando som om man vore den användaren.
+**What does it mean?** `su - user -c '...'` runs a command as if you were that user.
 
-1. eng_user1 skapar en fil. ✅
-2. eng_user2 försöker ta bort den. ❌ Det går inte, tack vare sticky bit.
-3. eng_user1 tar bort sin egen fil. ✅
-4. Någon från Sales försöker öppna Engineering-mappen. ❌ Nekad.
+1. eng_user1 makes a file. ✅
+2. eng_user2 tries to delete it. ❌ Not allowed, because of the sticky bit.
+3. eng_user1 deletes his own file. ✅
+4. Someone from Sales tries to open the Engineering folder. ❌ Denied.
 
 **Say:** "User 1 can make a file. User 2 is in the same department, but he cannot delete it. That is the sticky bit. User 1 can delete his own file. And a Sales user cannot open the Engineering folder. Over to Merat."
 
 # 3. MERAT
 
-## Block 7: hemlig fil
+## Block 7: secret file
 
 **Say:** "Now we put a secret file in each folder. Ali, run it."
 
@@ -151,11 +151,11 @@ chmod 640 /Engineering/confidential.txt /Sales/confidential.txt /HR/confidential
 ls -l /Engineering /Sales /HR
 ```
 
-**Vad betyder det?** Första raden skriver en mening i en fil, i alla tre mapparna. `chown` gör att filen ägs av samma chef och grupp som mappen. `chmod 640` betyder:
+**What does it mean?** The first line writes one sentence into a file, in all three folders. `chown` makes the file owned by the same boss and group as the folder. `chmod 640` means:
 
-- **6** = chefen får läsa och ändra.
-- **4** = avdelningen får bara läsa.
-- **0** = alla andra får ingenting.
+- **6** = the boss can read and change it.
+- **4** = the department can only read it.
+- **0** = everyone else can do nothing.
 
 **Say:** "We made a file with one sentence in each folder. The boss owns it. chmod 640 means the boss can read and change it, the department can only read it, and others can do nothing."
 
@@ -170,16 +170,16 @@ su - eng_admin -c 'echo "This file contains confidential information for the dep
 su - sales_user1 -c 'cat /Engineering/confidential.txt'
 ```
 
-**Vad betyder det?**
+**What does it mean?**
 
-1. En vanlig användare läser filen. ✅
-2. Samma användare försöker ändra den. ❌
-3. Chefen ändrar filen. ✅
-4. Någon från Sales försöker läsa den. ❌
+1. A normal user reads the file. ✅
+2. The same user tries to change it. ❌
+3. The boss changes the file. ✅
+4. Someone from Sales tries to read it. ❌
 
 **Say:** "A normal user can read the file, but cannot change it. The boss can change it. Sales cannot even read it. That was Part 1."
 
-## Block 9: scriptet
+## Block 9: the script
 
 **Say:** "Now Part 2, our script. Ali, show it."
 
@@ -188,21 +188,21 @@ cd ~
 cat usermgmt.sh
 ```
 
-**Vad betyder det?** `cat` visar vad som står i filen. Ali scrollar långsamt medan du förklarar. Scriptet gör samma sak som vi gjorde för hand, fast automatiskt:
+**What does it mean?** `cat` shows what is in the file. Ali scrolls slowly while you explain. The script does the same thing we did by hand, but automatically:
 
-1. Det frågar efter ett gruppnamn och kollar om det redan finns. Finns det, blir det ett fel och det frågar igen.
-2. Det frågar efter ett användarnamn och kollar på samma sätt.
-3. Det frågar efter lösenord två gånger.
-4. Det lägger användaren i gruppen.
-5. Det skapar en mapp med användarens namn och sätter rättigheter (1770).
+1. It asks for a group name and checks if it already exists. If it does, it shows an error and asks again.
+2. It asks for a username and checks it the same way.
+3. It asks for the password two times.
+4. It puts the user in the group.
+5. It makes a folder with the user's name and sets the permissions (1770).
 
-`$?` är ett "svar" från förra kommandot: 0 betyder att det lyckades eller hittades.
+`$?` is the "answer" from the last command: 0 means it worked or was found.
 
 **Say:** "This is our script. It asks for a group name. If the name already exists, it shows an error and asks again. We check this with getent and the special variable dollar question mark. It tells us if the last command worked. Then it does the same for the username. Then it asks for a password two times. Then it makes a folder with the user's name and gives it the right permissions. Nothing is hardcoded. You can type any name. Hussein will run it."
 
 # 4. HUSSEIN
 
-## Block 10: gör scriptet körbart
+## Block 10: make the script executable
 
 **Say:** "First, the script must be executable. Ali, run it."
 
@@ -213,11 +213,11 @@ chmod +x usermgmt.sh
 ls -l usermgmt.sh
 ```
 
-**Vad betyder det?** `x` betyder att filen får köras som ett program. Först tar vi bort x (`-rw-r--r--`), sedan lägger vi till det (`-rwxr-xr-x`).
+**What does it mean?** `x` means the file can run as a program. First we remove the x (`-rw-r--r--`), then we add it (`-rwxr-xr-x`).
 
 **Say:** "First there is no x, so we cannot run it. chmod +x adds the x. Now we can run the script."
 
-## Block 11: kör scriptet
+## Block 11: run the script
 
 **Say:** "Now let's run it."
 
@@ -225,9 +225,9 @@ ls -l usermgmt.sh
 ./usermgmt.sh
 ```
 
-Ali skriver svaren ett i taget. Hussein säger:
+Ali types the answers one at a time. Hussein says:
 
-| Ali skriver | Hussein säger |
+| Ali types | Hussein says |
 |---|---|
 | HR | "HR already exists. We get an error, and it asks again." |
 | Marketing | "Marketing is new, so the group is made." |
@@ -240,7 +240,7 @@ Ali skriver svaren ett i taget. Hussein säger:
 
 **Say:** "At the end we see a summary. Anna is in the Marketing group, and she has a folder called /anna."
 
-## Block 12: kontrollera
+## Block 12: check
 
 **Say:** "Let's check that everything worked. Ali, run it."
 
@@ -251,18 +251,18 @@ su - anna -c 'touch /anna/test && ls -l /anna'
 su - eng_user1 -c 'ls /anna'
 ```
 
-**Vad betyder det?**
+**What does it mean?**
 
-1. Anna finns med i Marketing-gruppen.
-2. Anna har ett lösenord sparat. Det syns som en kod (hash), inte som riktig text.
-3. Anna kan skapa filer i sin mapp. ✅
-4. Andra kan inte öppna hennes mapp. ❌
+1. Anna is a member of the Marketing group.
+2. Anna has a saved password. It shows as a code (a hash), not as real text.
+3. Anna can make files in her folder. ✅
+4. Others cannot open her folder. ❌
 
 **Say:** "Anna is in the Marketing group. Her password is saved. She can use her folder, and other users cannot. So everything works. Thank you for watching!"
 
-**Ali stoppar inspelningen.**
+**Ali stops the recording.**
 
-# Reset (bara om ni måste börja om)
+# Reset (only if you need to start over)
 
 ```
 for u in eng_admin eng_user1 eng_user2 sales_admin sales_user1 sales_user2 hr_admin hr_user1 hr_user2 anna bob; do userdel -r $u 2>/dev/null; done
