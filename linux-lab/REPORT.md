@@ -5,16 +5,16 @@
 
 **Course:** GIK2NV – Data storage and management technologies
 
-**Date:** [DATE]
+**Date:** 2026-10-16
 
-| Student | DU-ID |
-|---|---|
-| Bilal [Last name] | [DU-ID] |
-| Ali [Last name] | [DU-ID] |
-| Merat [Last name] | [DU-ID] |
-| Hussein [Last name] | [DU-ID] |
+| Students |
+|---|
+| Ali Hasan |
+| Bilal Ahmed Adem |
+| Hussein Mustafa |
+| Merat Bakoyan |
 
-**Video presentation:** [YouTube link]
+**Video presentation:** uploaded separately on Canvas
 :::
 
 # Introduction
