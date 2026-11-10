@@ -10,7 +10,7 @@ subtitle: "Defining our company and project"
 
 # 1. Our group and why we chose this idea
 
-We are a group of two, Ali and Bilal. For this course we chose to build our work around a small online clothing brand. We picked it because we already know a lot about e-commerce and online marketing, both from our own projects and from following brands we like. That makes it easier for us to describe how things really work day to day, which will help a lot when we model the company's IT architecture later in the course.
+We are a group of two, Ali and Bilal. For this course we chose to build our work around a small online clothing brand. It is a type of business that is easy to picture, and it has clear processes and plenty of data, which makes it a good fit for modelling an IT architecture later in the course.
 
 The company is not real. We made it up, but we tried to make it as realistic as possible.
 
