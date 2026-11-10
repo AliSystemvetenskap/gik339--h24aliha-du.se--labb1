@@ -1,0 +1,16 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-10T12:00:00Z"},
+  "lists": "css",
+  "title": "StarkFit – Seminar 1 (Group 15)",
+  "order": ["cover", "glance", "products", "problem", "project", "stakeholders", "perspectives", "structure", "processes", "bpmn", "ea", "success", "next", "questions"],
+  "sections": {
+    "s1": {"description": "Ali: the company, its products, the problem, the project and its people", "start": "cover"},
+    "s2": {"description": "Bilal: structure, processes, the two architecture models and success factors", "start": "structure"}
+  },
+  "faces": {
+    "oswald": {"family": "Oswald", "href": "https://fonts.googleapis.com/css2?family=Oswald:wght@400..700&display=swap"},
+    "public-sans": {"family": "Public Sans", "href": "https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap"}
+  },
+  "designSystems": []
+}
