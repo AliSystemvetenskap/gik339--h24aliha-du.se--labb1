@@ -96,7 +96,7 @@ A stakeholder is any person or group that affects the project or is affected by 
 
 # 5. Company structure
 
-StarkFit is organised with a small head office and a regional structure. Mintzberg (1979) would describe this as a *divisional* type of structure, where each region and gym runs its daily work, while head office decides strategy and shared services.
+StarkFit is organised with a small head office and a regional structure. Mintzberg (1979) calls this kind of structure a *divisionalized form*, where each region and gym runs its daily work, while head office decides strategy and shared services.
 
 | Level | Roles | Main tasks |
 |---|---|---|
@@ -172,13 +172,13 @@ StarkFit grew by buying other gym chains and now runs three membership systems t
 
 Dumas, M., La Rosa, M., Mendling, J., & Reijers, H. A. (2018). *Fundamentals of Business Process Management* (2nd ed.). Springer.
 
-European Union. (2016). *Regulation (EU) 2016/679 of the European Parliament and of the Council (General Data Protection Regulation)*. Official Journal of the European Union, L 119.
+European Union. (2016). *Regulation (EU) 2016/679 of the European Parliament and of the Council (General Data Protection Regulation)*. Official Journal of the European Union, L 119, 1–88.
 
-Freeman, R. E. (1984). *Strategic Management: A Stakeholder Approach*. Pitman.
+Freeman, R. E. (1984). *Strategic Management: A Stakeholder Approach*. Boston: Pitman.
 
 Hohpe, G., & Woolf, B. (2003). *Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions*. Addison-Wesley.
 
-Mintzberg, H. (1979). *The Structuring of Organizations*. Prentice-Hall.
+Mintzberg, H. (1979). *The Structuring of Organizations: A Synthesis of the Research*. Prentice-Hall.
 
 Ross, J. W., Weill, P., & Robertson, D. C. (2006). *Enterprise Architecture as Strategy: Creating a Foundation for Business Execution*. Harvard Business School Press.
 
