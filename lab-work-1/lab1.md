@@ -1,5 +1,5 @@
 ---
-title: "Lab Work 1 – Kollekt Studio"
+title: "Lab Work 1 – StarkFit Gyms"
 subtitle: "Defining our company and project"
 ---
 
@@ -8,155 +8,165 @@ subtitle: "Defining our company and project"
 **Members:** Ali Hasan, Bilal Ahmed Adem\
 **Date:** 2026-11-10
 
-# 1. Our group and why we chose this idea
+# 1. Our group and our idea
 
-We are a group of two, Ali and Bilal. For this course we chose to build our work around a small online clothing brand. It is a type of business that is easy to picture, and it has clear processes and plenty of data, which makes it a good fit for modelling an IT architecture later in the course.
+We are a group of two, Ali and Bilal. For this course we chose to base our work on a gym chain. Most people have been to a gym, so the business is easy to understand. At the same time, a gym chain has many systems that need to work together: memberships, door access, class booking, payments and apps. That makes it a good case for IT architecture.
 
 The company is not real. We made it up, but we tried to make it as realistic as possible.
 
 # 2. The company
 
-**Kollekt Studio AB** is a small Swedish streetwear brand based in Borlänge. It sells hoodies, t-shirts, sweatpants and caps. The style is simple and clean, with a focus on good quality cotton and limited drops.
-
-Some quick facts about the company:
+**StarkFit AB** is a Swedish gym chain with its head office in Borlänge. It offers gym training, group classes (like spinning, yoga and HIIT) and personal training.
 
 | Fact | Details |
 |---|---|
-| Founded | 2023 |
-| Employees | 8 people (plus 2 part-time warehouse workers in busy periods) |
-| Sales channels | Own webshop (about 85% of sales) and Instagram/TikTok shop |
-| Customers | Mostly young adults aged 16–30 in Sweden and the Nordics |
-| Yearly orders | Around 12 000 orders |
-| Production | Clothes are made by a factory in Portugal. Printing is done in Sweden |
-
-Kollekt Studio sells only online. Customers find the brand through social media, influencers and ads, and then buy through the webshop. The company releases new products in "drops" a few times a year. A drop is a small collection that is only available for a short time or until it sells out.
+| Founded | 2015 in Borlänge |
+| Gyms | 25 gyms in Dalarna, Gävleborg, Värmland and Uppsala |
+| Members | About 40 000 |
+| Employees | About 180 (head office, gym staff, trainers, many part-time) |
+| Memberships | Monthly direct debit, yearly card, student and day passes |
+| How it grew | Started with 12 gyms, then bought *GymNorr* (8 gyms) in 2022 and *FlexTräning* (5 gyms) in 2024 |
 
 # 3. The project
 
 ## The problem today
 
-The company has grown fast, but its systems have not kept up. Right now, information is spread across many places:
+StarkFit grew mainly by buying other gym chains. Each chain came with its own systems, and these were never properly joined together. Today the company runs:
 
-- Orders come in through the webshop platform.
-- Stock levels are tracked in a shared Excel sheet that the warehouse updates by hand.
-- Customer questions are handled in an email inbox and in Instagram messages.
-- Supplier orders are kept in emails and PDF files.
+- **three different membership systems**, one for each original chain,
+- **two different door systems**, key tags in some gyms and QR codes in the app in others,
+- **two booking apps** for group classes,
+- **payments spread out** over direct debit, card payments and invoices, handled differently depending on the system.
 
-Because nothing is connected, mistakes happen. Sometimes the webshop shows a product as in stock when it is actually sold out. Customer service can't easily see a customer's order history. During drops, when hundreds of orders come in within an hour, these problems get much worse.
+This causes real problems for both members and the company:
 
-## Our project: "One Place"
+- A member who joined in Borlänge **cannot get into** a former GymNorr gym in Gävle, even though StarkFit promises "train at all our gyms".
+- The same person can exist **two or three times** in different systems, so nobody knows the true number of members.
+- Head office builds its monthly reports **by hand** from three systems, and the numbers often do not match.
+- When a member quits, their personal data is not always deleted from the old systems, which is a **GDPR risk**.
+- Every January, when many people join at once, the old systems **become slow** or crash.
 
-The project is to **design a new IT architecture for the company, where all important systems and data are connected**. We call it *One Place*. At its centre is one shared database that holds information about products, stock, customers, orders, payments, returns and suppliers. The webshop, the warehouse, customer service and the outside partners will all connect to it, so every department works from the same data. The architecture should also be able to grow with the company, since drops create big peaks in traffic.
+These problems cannot be fixed by simply buying a new app. The gyms must stay open, the doors must keep working, and money must keep coming in while the systems are changed.
+
+## Our project: "One Member"
+
+The project is to **design a new IT architecture for StarkFit**, where every member exists only once and can use every gym. We call it *One Member*. At its centre is one shared member register. The door system, class booking, payments, the member app and head-office reports all connect to it. The old systems will be phased out **one gym group at a time**, so the business never has to stop.
 
 ## Scope
 
 **Included in the project:**
 
-- A plan for how the company's systems fit together (business, data and system level).
-- A central database for products, stock, customers, orders, returns and suppliers.
-- Connecting the webshop so that orders and stock update automatically.
-- Simple views for each team. For example, the warehouse sees what to pack, and customer service sees a customer's orders.
-- Basic reports, such as best-selling products and stock that is running low.
+- A plan for how the company's business, data and systems fit together.
+- One shared member register, with old member data merged and duplicates removed.
+- Connecting door access, class booking and payments to the new register.
+- One member app and website for all gyms.
+- Automatic reports for head office and gym managers.
+- A step-by-step plan for moving each gym over from its old system.
 
 **Not included:**
 
-- Building a new webshop. We keep the one we have.
-- Accounting and salaries. These stay with the external accounting firm.
-- Marketing tools and ad platforms. We may connect them later, but not in this project.
+- Salaries and accounting. These stay with the external accounting firm.
+- New gym equipment or new gyms.
+- Marketing campaigns.
 
 ## Goals
 
-We want the goals to be clear and possible to measure:
-
-1. **No more overselling.** Stock should update automatically, so that no product can be sold when it is out of stock.
-2. **Faster customer service.** Customer service should be able to find any order in under one minute. The goal is to answer customers within 24 hours.
-3. **Faster packing.** Orders should be ready to ship within one working day, even during drops.
-4. **Room to grow.** The system should handle at least five times today's order volume during a drop without slowing down.
-5. **Better decisions.** Management should get a weekly report showing sales, stock and returns, without anyone building it by hand.
-6. **Safe customer data.** All personal data should be stored safely and handled according to GDPR.
+1. **One member, all gyms.** By the end of 2027, every member can enter all 25 gyms with the same card or app.
+2. **No duplicates.** Each person is registered only once in the member register.
+3. **No stop for members.** Door access and class booking should not be down for more than one hour during any gym's switch to the new system.
+4. **Handle the January rush.** The system should cope with three times the normal number of sign-ups without slowing down.
+5. **Reports without manual work.** Head office gets correct monthly reports on members, visits and income automatically.
+6. **Safe personal data.** Member data is stored safely and deleted on time, according to GDPR.
 
 # 4. Stakeholders
 
-A stakeholder is any person or group that affects the project or is affected by it (Freeman, 1984). For our project we found these:
+A stakeholder is any person or group that affects the project or is affected by it (Freeman, 1984).
 
 | Stakeholder | What they want | How the project affects them |
 |---|---|---|
-| **Customers** | Correct stock information, fast delivery, easy returns | Fewer cancelled orders and faster answers |
-| **Owners / founders** | Growth, profit and a good brand reputation | Better reports and fewer costly mistakes |
-| **Customer service** | Quick access to order and customer information | Everything in one place instead of many inboxes |
-| **Warehouse staff** | Clear packing lists and correct stock numbers | No more manual Excel updates |
-| **Marketing team** | Know what sells and when to plan drops | Sales data they can trust |
-| **Suppliers** (factory and printer) | Clear and correct purchase orders | Orders based on real stock levels |
-| **Delivery partners** (PostNord, DHL) | Correct shipping information | Shipping data sent automatically |
-| **Payment providers** (Klarna, card payments) | Correct payment and refund data | Payments linked to the right order |
-| **Authorities** (GDPR rules) | Personal data is protected | The system must store data safely |
+| **Members** | Train at any gym, easy booking, correct payments | One card/app that works everywhere |
+| **Owners and management** | Growth, profit, a clear picture of the business | Reliable numbers and lower system costs |
+| **Gym managers** | Running their gym smoothly, happy members | Fewer complaints, easy access to their own figures |
+| **Reception and trainers** | Quick help for members, simple class lists | One system instead of three |
+| **Head office (IT, finance, customer service)** | Systems that work and match each other | Less manual work, but a big change to manage |
+| **Suppliers of current systems** | Keep their contracts | Some contracts will end |
+| **Payment partners** (bank, Autogiro, card provider) | Correct and secure payment data | Payments move to one system |
+| **Door system supplier** | Clear technical needs | Doors must connect to the new member register |
+| **Authorities** (GDPR, IMY) | Personal data is protected | Data must be stored and deleted correctly |
 
 # 5. Company structure
 
-Kollekt Studio is a small company with a simple and flat structure. Mintzberg (1979) calls this a *simple structure*, where the founders make most of the big decisions and people often help out across teams. Even so, each person has a clear main role.
+StarkFit is organised with a small head office and a regional structure. Mintzberg (1979) would describe this as a *divisional* type of structure, where each region and gym runs its daily work, while head office decides strategy and shared services.
 
-| Team | People | Main tasks |
+| Level | Roles | Main tasks |
 |---|---|---|
-| **Management** (Founders / CEO) | 2 | Strategy, finance, product decisions, contact with suppliers |
-| **Marketing & Social Media** | 2 | Ads, influencers, content, planning drops |
-| **Customer Service** | 1 | Answering questions, handling returns and complaints |
-| **Warehouse & Logistics** | 2 (+2 part-time) | Receiving stock, packing orders, shipping, returns |
-| **E-commerce & IT** | 1 | Running the webshop, product pages, this project |
+| **Management** | CEO, CFO, Head of Operations | Strategy, budget, buying new gyms |
+| **Head office functions** | IT (4), Finance (3), Customer service (5), Marketing (3), HR (2) | Shared systems, payments, support, campaigns, staff |
+| **Regional managers** | 4 regions | Follow up on the gyms in their region |
+| **Gym managers** | 1 per gym | Daily running of the gym, staff schedules |
+| **Gym staff** | Reception, trainers, personal trainers | Meeting members, classes, training |
 
-The two founders are in charge of everything. The other teams report directly to them. In the project, the E-commerce & IT person leads the work, and every team gives input on what they need.
+The IT team leads the *One Member* project, with support from finance, customer service and a group of gym managers who test each step in practice.
 
 # 6. Main processes
 
-A business process is a set of steps that together create value for a customer (Dumas et al., 2018). These are the most important processes in Kollekt Studio, and they are the ones our new system needs to support.
+A business process is a set of steps that together create value for a customer (Dumas et al., 2018). These are the main processes the new architecture must support.
 
-## 6.1 Order process (the most important)
+## 6.1 Becoming a member
 
-1. The customer picks products and places an order in the webshop.
-2. The customer pays with card or Klarna.
-3. The system saves the order and lowers the stock for those products.
-4. The warehouse gets the order on its packing list.
-5. The warehouse packs the order and books shipping with PostNord or DHL.
-6. The customer gets an email with a tracking number.
-7. The order is marked as delivered.
+1. The person chooses a membership in the app, on the website or at the reception.
+2. They fill in their details and accept the terms.
+3. They choose how to pay (direct debit, card or invoice).
+4. The member is saved in the member register and gets a key tag or app access.
 
-## 6.2 Return process
+## 6.2 Visiting a gym
 
-1. The customer asks for a return within 30 days.
-2. The customer sends the product back.
-3. The warehouse checks the product. If it is OK, it goes back into stock.
-4. The customer gets their money back, and the order is updated.
+1. The member scans their tag or app at the door.
+2. The door system checks with the member register that the membership is active.
+3. The door opens, and the visit is saved.
 
-## 6.3 Purchasing process
+## 6.3 Booking a class
 
-1. The system shows which products are running low.
-2. Management decides what and how much to order.
-3. A purchase order is sent to the factory or printer.
-4. When the goods arrive, the warehouse checks them and adds them to stock.
+1. The member books a class in the app.
+2. The system checks that there are free spots and that the membership includes classes.
+3. The trainer sees the list of booked members. No-shows are noted.
 
-## 6.4 Drop process
+## 6.4 Monthly payment
 
-1. Marketing and management plan a new collection and its release date.
-2. New products are added to the system with sizes, colours and prices.
-3. Marketing promotes the drop on social media.
-4. On drop day, many orders come in at once, and the order process above takes over.
+1. Each month, the system creates payments for all active members.
+2. Payments are sent to the bank or card provider.
+3. If a payment fails, the member gets a reminder, and access may be paused.
+
+## 6.5 Ending a membership
+
+1. The member cancels in the app or at reception.
+2. Access stops when the notice period ends.
+3. Personal data is deleted or anonymised after the time required by law.
+
+## 6.6 Moving a gym to the new system
+
+1. Member data from the gym's old system is copied and cleaned.
+2. Duplicates are found and merged with existing members.
+3. The door and booking systems at the gym are connected to the new register.
+4. The gym is tested for a few days before the old system is turned off.
 
 # 7. Focus of the project
 
-The main focus of the project is **how the company's business, data and systems fit together**. Ross, Weill and Robertson (2006) describe enterprise architecture as the plan that links a company's business processes with its IT, so the two support each other. Laudon and Traver (2021) also point out that in e-commerce, data about customers, products and orders is one of the company's most valuable resources.
+The main focus is **how StarkFit's business, data and systems fit together**. Ross, Weill and Robertson (2006) describe enterprise architecture as the plan that links a company's business processes with its IT. Because StarkFit has to connect many old and new systems, we will also look at integration, meaning how systems exchange data with each other (Hohpe & Woolf, 2003).
 
-In the coming labs we will use Kollekt Studio to look at the areas of IT architecture covered in the course:
+In the coming labs we will use StarkFit for each area of IT architecture in the course:
 
 - **Business architecture.** Goals, stakeholders, structure and processes (this document).
-- **Data modeling.** Customers, orders, products, stock, returns and suppliers.
-- **System architecture.** How the webshop, database, warehouse and partner systems connect.
-- **Web information architecture.** How the webshop is organised so customers can find products easily.
-- **Platform architecture.** Where the systems run, and how they handle peaks during drops.
+- **Data modeling.** Members, memberships, gyms, visits, classes, bookings and payments.
+- **System architecture.** How the member register connects to doors, booking, payments and the old systems.
+- **Web information architecture.** How the member app and website are organised.
+- **Platform architecture.** Where the systems run, and how they handle peaks like the January rush.
 
-We will also try to use open standards where we can, for example common formats for exchanging data with delivery and payment partners, in line with frameworks such as TOGAF (The Open Group, 2018).
+We will try to use open standards where possible, for example for exchanging data with door systems and payment partners, in line with frameworks such as TOGAF (The Open Group, 2018).
 
 # 8. Summary
 
-Kollekt Studio is a small online streetwear brand that has grown faster than its systems. Our project, *One Place*, will give the company a new IT architecture where all important data and systems are connected. This will help the company avoid overselling, give customers faster answers, make packing quicker and give management better reports. We will keep using Kollekt Studio as our company for the rest of the course.
+StarkFit grew by buying other gym chains and now runs three membership systems that do not work together. Our project, *One Member*, will give StarkFit a new IT architecture with one member register at its centre, introduced one gym group at a time. We will keep using StarkFit for the rest of the course.
 
 # References
 
@@ -166,7 +176,7 @@ European Union. (2016). *Regulation (EU) 2016/679 of the European Parliament and
 
 Freeman, R. E. (1984). *Strategic Management: A Stakeholder Approach*. Pitman.
 
-Laudon, K. C., & Traver, C. G. (2021). *E-commerce 2021: Business, Technology, Society* (16th ed.). Pearson.
+Hohpe, G., & Woolf, B. (2003). *Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions*. Addison-Wesley.
 
 Mintzberg, H. (1979). *The Structuring of Organizations*. Prentice-Hall.
 
