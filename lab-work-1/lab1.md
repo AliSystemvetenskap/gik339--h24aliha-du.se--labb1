@@ -3,14 +3,14 @@ title: "Lab Work 1 – Kollekt Studio"
 subtitle: "Defining our company and project"
 ---
 
-**Course:** GIK2NV – Data storage and management technologies\
+**Course:** IT Architecture (HT26), Dalarna University\
 **Group:** 15\
 **Members:** Ali Hasan, Bilal Ahmed Adem\
 **Date:** 2026-11-10
 
 # 1. Our group and why we chose this idea
 
-We are a group of two, Ali and Bilal. For this course we chose to build our work around a small online clothing brand. We picked it because we already know a lot about e-commerce and online marketing, both from our own projects and from following brands we like. That makes it easier for us to describe how things really work day to day, which will help a lot when we build data models later in the course.
+We are a group of two, Ali and Bilal. For this course we chose to build our work around a small online clothing brand. We picked it because we already know a lot about e-commerce and online marketing, both from our own projects and from following brands we like. That makes it easier for us to describe how things really work day to day, which will help a lot when we model the company's IT architecture later in the course.
 
 The company is not real. We made it up, but we tried to make it as realistic as possible.
 
@@ -46,12 +46,13 @@ Because nothing is connected, mistakes happen. Sometimes the webshop shows a pro
 
 ## Our project: "One Place"
 
-The project is to **build one central system where all important company data is stored and connected**. We call it *One Place*. It will hold information about products, stock, customers, orders, payments, returns and suppliers in one shared database. Every department will work from the same data.
+The project is to **design a new IT architecture for the company, where all important systems and data are connected**. We call it *One Place*. At its centre is one shared database that holds information about products, stock, customers, orders, payments, returns and suppliers. The webshop, the warehouse, customer service and the outside partners will all connect to it, so every department works from the same data. The architecture should also be able to grow with the company, since drops create big peaks in traffic.
 
 ## Scope
 
 **Included in the project:**
 
+- A plan for how the company's systems fit together (business, data and system level).
 - A central database for products, stock, customers, orders, returns and suppliers.
 - Connecting the webshop so that orders and stock update automatically.
 - Simple views for each team. For example, the warehouse sees what to pack, and customer service sees a customer's orders.
@@ -70,8 +71,9 @@ We want the goals to be clear and possible to measure:
 1. **No more overselling.** Stock should update automatically, so that no product can be sold when it is out of stock.
 2. **Faster customer service.** Customer service should be able to find any order in under one minute. The goal is to answer customers within 24 hours.
 3. **Faster packing.** Orders should be ready to ship within one working day, even during drops.
-4. **Better decisions.** Management should get a weekly report showing sales, stock and returns, without anyone building it by hand.
-5. **Safe customer data.** All personal data should be stored safely and handled according to GDPR.
+4. **Room to grow.** The system should handle at least five times today's order volume during a drop without slowing down.
+5. **Better decisions.** Management should get a weekly report showing sales, stock and returns, without anyone building it by hand.
+6. **Safe customer data.** All personal data should be stored safely and handled according to GDPR.
 
 # 4. Stakeholders
 
@@ -140,23 +142,23 @@ A business process is a set of steps that together create value for a customer (
 
 # 7. Focus of the project
 
-The main focus of the project is **data**: how the company stores, connects and uses its information. Laudon and Traver (2021) point out that in e-commerce, the company's data about customers, products and orders is one of its most valuable resources. Chaffey (2015) also stresses that online businesses need their systems to work together so that the customer gets a smooth experience.
+The main focus of the project is **how the company's business, data and systems fit together**. Ross, Weill and Robertson (2006) describe enterprise architecture as the plan that links a company's business processes with its IT, so the two support each other. Laudon and Traver (2021) also point out that in e-commerce, data about customers, products and orders is one of the company's most valuable resources.
 
-For this course, we will focus most on:
+In the coming labs we will use Kollekt Studio to look at the areas of IT architecture covered in the course:
 
-- **Orders and customers.** Who buys what, and when.
-- **Products and stock.** Sizes, colours and how many are left.
-- **Returns and suppliers.** What comes back, and what we buy in.
+- **Business architecture.** Goals, stakeholders, structure and processes (this document).
+- **Data modeling.** Customers, orders, products, stock, returns and suppliers.
+- **System architecture.** How the webshop, database, warehouse and partner systems connect.
+- **Web information architecture.** How the webshop is organised so customers can find products easily.
+- **Platform architecture.** Where the systems run, and how they handle peaks during drops.
 
-These areas give us plenty of material for later labs, where we will design data models and a database for Kollekt Studio.
+We will also try to use open standards where we can, for example common formats for exchanging data with delivery and payment partners, in line with frameworks such as TOGAF (The Open Group, 2018).
 
 # 8. Summary
 
-Kollekt Studio is a small online streetwear brand that has grown faster than its systems. Our project, *One Place*, will gather all important company data into one shared system. This will help the company avoid overselling, give customers faster answers, make packing quicker and give management better reports. We will keep using Kollekt Studio as our company for the rest of the course.
+Kollekt Studio is a small online streetwear brand that has grown faster than its systems. Our project, *One Place*, will give the company a new IT architecture where all important data and systems are connected. This will help the company avoid overselling, give customers faster answers, make packing quicker and give management better reports. We will keep using Kollekt Studio as our company for the rest of the course.
 
 # References
-
-Chaffey, D. (2015). *Digital Business and E-Commerce Management* (6th ed.). Pearson Education.
 
 Dumas, M., La Rosa, M., Mendling, J., & Reijers, H. A. (2018). *Fundamentals of Business Process Management* (2nd ed.). Springer.
 
@@ -167,3 +169,7 @@ Freeman, R. E. (1984). *Strategic Management: A Stakeholder Approach*. Pitman.
 Laudon, K. C., & Traver, C. G. (2021). *E-commerce 2021: Business, Technology, Society* (16th ed.). Pearson.
 
 Mintzberg, H. (1979). *The Structuring of Organizations*. Prentice-Hall.
+
+Ross, J. W., Weill, P., & Robertson, D. C. (2006). *Enterprise Architecture as Strategy: Creating a Foundation for Business Execution*. Harvard Business School Press.
+
+The Open Group. (2018). *The TOGAF Standard, Version 9.2*. The Open Group.
