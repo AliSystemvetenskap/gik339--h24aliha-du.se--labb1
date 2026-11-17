@@ -36,6 +36,7 @@ Tip: read slowly. Each slide is about 45 seconds.
 **🎤 ALI:**
 > AB GymCenter is a gym in Stockholm.
 > It started in 2018. Today it has about 3,500 members and 28 employees.
+> We are open every day, from 5 in the morning to 11 at night.
 >
 > We describe the gym in three points.
 >
@@ -65,6 +66,9 @@ Tip: read slowly. Each slide is about 45 seconds.
 >
 > The last one, in green, is the **member app**.
 > This is the new part. It connects everything together.
+>
+> Most of our members are students and young workers, between 18 and 40.
+> They use their phones for everything, so an app fits them well.
 
 ---
 
@@ -85,6 +89,8 @@ Tip: read slowly. Each slide is about 45 seconds.
 > **The business** has little insight.
 > People book and don't show up, so spots are wasted.
 > And our member data is weak.
+>
+> Because of all this, many members get tired and leave after a few months.
 
 ---
 
@@ -101,6 +107,9 @@ Tip: read slowly. Each slide is about 45 seconds.
 >
 > Behind the app is the **booking system**.
 > It handles schedules, how many places each class has, and who attended.
+>
+> Some things are not part of the project.
+> For example, opening a second gym, buying new machines, or making online videos.
 
 ---
 
@@ -116,6 +125,9 @@ Tip: read slowly. Each slide is about 45 seconds.
 > **Achievable:** we start with a basic version that covers the most important needs.
 > **Relevant:** less admin work for staff, and easier access for members.
 > **Time-bound:** we test it after 4 months, and check the results after 6 months.
+>
+> We also want fewer members to leave, and fuller classes.
+> Today classes are about 60 percent full. We want 80 percent.
 
 ---
 
@@ -154,6 +166,9 @@ Tip: read slowly. Each slide is about 45 seconds.
 >
 > A simple structure means fast decisions,
 > and everyone knows who is responsible for what.
+>
+> The project team has one person from each team,
+> so everyone's needs are heard.
 
 ---
 
@@ -172,6 +187,9 @@ Tip: read slowly. Each slide is about 45 seconds.
 >
 > **Book** is in green, because that step has the most problems today.
 > That is the main focus of our project.
+>
+> We also have support processes in the background,
+> like payments, staff schedules, repairs, marketing and IT.
 
 ---
 
@@ -220,6 +238,10 @@ Tip: read slowly. Each slide is about 45 seconds.
 > **Step 3, Remind:** they get a reminder before the class.
 > **Step 4, Check in:** they check in when they arrive at the gym.
 > **Step 5, Record:** the system saves who attended.
+>
+> If a member doesn't show up many times,
+> the reception can see it and contact them.
+> And if someone cancels, the next person on the waitlist gets the spot.
 
 ---
 
@@ -237,6 +259,9 @@ Tip: read slowly. Each slide is about 45 seconds.
 > **Two**, make a prototype of the booking flow.
 > **Three**, build and test the first version.
 > **Four**, test it in the gym, measure the results, and improve.
+>
+> Later in the course we will build on this,
+> for example with BPMN process models, data models, and project risks.
 
 **🎤 ALI + BILAL:**
 > Thank you for listening. Do you have any questions?
