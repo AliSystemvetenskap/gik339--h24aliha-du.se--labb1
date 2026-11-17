@@ -1,132 +1,243 @@
-# AB GymCenter – Presentation Script (Group 15)
+# AB GymCenter – Presentation Script
 
-**Speakers:** Ali Hasan (slides 1–6) · Bilal Ahmed Adem (slides 7–13)
-**Total time:** ~10 minutes (Ali ≈ 5 min, Bilal ≈ 5 min)
-
----
-
-## Slide 1 – Title (Ali, ~30 s)
-
-Hi everyone. We are Group 15. My name is Ali Hasan.
-
-*(Bilal:)* And I'm Bilal Ahmed Adem.
-
-*(Ali:)* Today we will present AB GymCenter. It's the company we made up for this course. We'll talk about the company, the project, the stakeholders, how the company is organized, and how it works. At the end we show it with an enterprise architecture view and a process model. We have both been gym members, so we based it on how a real gym works day to day.
-
-## Slide 2 – Who we are (Ali, ~45 s)
-
-AB GymCenter is a medium-sized gym in Stockholm. It was started in 2018 by two personal trainers. They wanted a gym that feels friendly and isn't too expensive.
-
-Today we have one big location, about 2,000 square metres. We have around 3,500 members and 28 employees, and we are open every day from five in the morning to eleven at night.
-
-Our vision is simple: **make it easy for everyone in the city to stay healthy.**
-
-## Slide 3 – Products and services (Ali, ~45 s)
-
-We sell four kinds of products and services.
-
-The biggest one is the **gym membership**. It's paid every month and it brings in about 75 percent of our income.
-
-Then we have **group classes** like yoga, spinning and HIIT, **personal training** packages, and a small **shop** with drinks and supplements. Those three bring in the other 25 percent.
-
-Most of our members are students and young workers between 18 and 40. We also have older members who mostly come to the daytime classes.
-
-## Slide 4 – The problem today (Ali, ~50 s)
-
-The problem is that AB GymCenter still works in an old way.
-
-Members book classes on an old website. The reception keeps paper lists. Member data, payments and staff schedules are kept in different Excel files that don't talk to each other.
-
-Because of this, classes are often overbooked or almost empty. The reception spends a lot of time answering simple questions like "is there space in spinning tonight?". And many members leave after only a few months.
-
-So the management decided to start a project to replace all of this with one digital system.
-
-## Slide 5 – The project (Ali, ~50 s)
-
-The project is called the **Member App and Booking System**.
-
-For members, there is a mobile app and a web page. They can sign up, pay, book classes and trainers, check in at the door with a QR code, and see their training history.
-
-For the staff, there is an admin system to manage members, schedules, trainers and payments. It connects to a payment provider and to the door system. Management also gets simple reports on visits, busy hours and cancellations.
-
-What is **not** in the project: opening a second gym, buying new equipment, or building an online video service. We can look at those later.
-
-## Slide 6 – SMART goals (Ali, ~50 s)
-
-We wrote our goals in a SMART way, so they are specific and measurable.
-
-One: within six months after launch, **80 percent** of all class bookings should be made in the app.
-
-Two: within one year, the reception's admin time should go down by **30 percent**.
-
-Three: the yearly cancellation rate should drop from **28 to 20 percent**.
-
-And four: average class attendance should go up from **60 to 80 percent** of the available places.
-
-Now Bilal will talk about the people and the structure behind the company.
+**Group 15:** Ali Hasan and Bilal Ahmed Adem
+**Time:** about 10 minutes
+**Ali:** slides 1–6 (about 5 min)
+**Bilal:** slides 7–13 (about 5 min)
 
 ---
 
-## Slide 7 – Stakeholders (Bilal, ~50 s)
+## SLIDE 1 – AB GymCenter (title)
 
-Thanks Ali. A stakeholder is anyone who can affect the project or is affected by it.
+**On the slide:** Lab Work 1 · Group 15: Ali Hasan and Bilal Ahmed Adem
 
-Our **primary** stakeholders are directly involved. That's the members, who want easy booking, a fair price and safe data. The owners and management, who want more profit and fewer cancellations. The reception staff, who want less manual work. The trainers, who want clear schedules. And the project team and IT, who need clear requirements, time and money.
+**🎤 ALI:**
+> Hi everyone. We are Group 15. My name is Ali.
 
-Our **secondary** stakeholders are more indirect. The app developer, the payment provider, suppliers, the authorities, who make sure we follow GDPR, and competing gyms. They are not involved, but they affect prices and what members expect.
+**🎤 BILAL:**
+> And my name is Bilal.
 
-## Slide 8 – Organization structure (Bilal, ~45 s)
+**🎤 ALI:**
+> Today we will show you our company, AB GymCenter.
+> It is a made-up gym, but it works like a real gym.
+> We have both been gym members, so we know how a gym works.
 
-AB GymCenter has a simple, functional structure with a short line between management and staff.
+---
 
-The general manager leads four departments. **Operations and Facility** with 6 people – opening, cleaning, equipment and safety. **Training and Classes**, our biggest team with 12 trainers. **Sales, Customer Service and Marketing** with 6 people, which includes the reception. And **Finance, HR and IT** with 3 people plus the general manager.
+## SLIDE 2 – About the company
 
-The project is led by a project manager from Finance, HR and IT. They report directly to the general manager and work with one person from each department.
+**On the slide:** Founded 2018 · Stockholm · 2,000 m² · 3,500 members · 28 employees · Open 05–23 · Vision
 
-## Slide 9 – Business processes (Bilal, ~50 s)
+**🎤 ALI:**
+> AB GymCenter is a gym in Stockholm.
+> It was started in 2018 by two personal trainers.
+> They wanted a gym that is friendly and not too expensive.
+>
+> Today the gym is 2,000 square metres.
+> We have about 3,500 members and 28 employees.
+> We are open every day, from 5 in the morning to 11 at night.
+>
+> Our vision is: **make it easy for everyone in the city to stay healthy.**
 
-We split our processes into core processes, which create value for members, and support processes, which keep the company running.
+---
 
-We have four core processes. **Getting a new member** – from interest, to a free trial, to sign-up and monthly payment. **Booking and attending classes** – this one causes the most problems today, so it's the main target of the project. **Personal training** – first meeting, a training plan, sessions and follow-up. And the **daily running of the gym**.
+## SLIDE 3 – Products and services
 
-The support processes are billing and payments, HR and staff scheduling, maintenance and purchasing, marketing, and IT and data handling, which includes backups and GDPR.
+**On the slide:** Membership (75%) · Group classes · Personal training · Shop · Customers 18–40
 
-## Slide 10 – Perspectives (Bilal, ~40 s)
+**🎤 ALI:**
+> We sell four things.
+>
+> Number one is the **gym membership**. Members pay every month.
+> This gives us about 75 percent of our money.
+>
+> We also have **group classes**, like yoga, spinning and HIIT.
+> We have **personal training**.
+> And we have a small **shop** with drinks and supplements.
+>
+> Most of our members are students and young workers, between 18 and 40 years old.
 
-Different groups look at the company in different ways.
+---
 
-**Customers** want it to be easy – book in a few seconds, pay a fair price, and know their data is safe.
+## SLIDE 4 – The problem today
 
-**Employees** want less paperwork and clear schedules, so they can spend time with members instead.
+**On the slide:** Old website · Paper lists · Excel files · Overbooked or empty classes · Members leave
 
-**Managers** want fewer cancellations, more profit and a clear view of the business through reports.
+**🎤 ALI:**
+> Right now, the gym works in an old way.
+>
+> Members book classes on an old website.
+> The reception uses paper lists.
+> Member data, payments and schedules are in different Excel files.
+>
+> This causes problems.
+> Some classes are too full, and some are almost empty.
+> The reception spends a lot of time on simple questions.
+> And many members leave after a few months.
+>
+> So the managers decided to start a new project.
 
-And the **sponsors**, the owners who pay for the project, want it delivered on time and on budget, and to pay back through more members staying longer.
+---
 
-## Slide 11 – Enterprise architecture view (Bilal, ~50 s)
+## SLIDE 5 – The project: Member App and Booking System
 
-To describe the company, we use an enterprise architecture view with three layers.
+**On the slide:** In scope · Out of scope
 
-On top is the **business layer**: our members, our staff and the core processes we just talked about.
+**🎤 ALI:**
+> The project is a **member app and booking system**.
+>
+> In the app, members can sign up, pay, and book classes and trainers.
+> They can check in at the door with a QR code.
+> They can also see their training history.
+>
+> The staff get an admin system.
+> It is connected to the payment system and the door system.
+> The managers get simple reports.
+>
+> Some things are **not** part of the project.
+> For example a second gym, new machines, or online videos.
 
-In the middle is the **application layer**: the member app, the web page, the admin system and the management reports. This layer also connects to two outside systems – the payment provider and the door system with QR check-in.
+---
 
-At the bottom is the **technology layer**: cloud hosting, the database, backups and security for GDPR.
+## SLIDE 6 – SMART goals
 
-The point is that everything is in one system instead of an old website, paper and Excel files.
+**On the slide:** 80% · −30% · 28% → 20% · 60% → 80%
 
-## Slide 12 – Process model: Book and attend a class (Bilal, ~40 s)
+**🎤 ALI:**
+> Our goals are SMART. That means they are clear and we can measure them.
+>
+> **Goal 1:** After 6 months, 80 percent of class bookings are made in the app.
+> **Goal 2:** After 1 year, reception spends 30 percent less time on admin.
+> **Goal 3:** Fewer members leave. We go from 28 percent to 20 percent.
+> **Goal 4:** Fuller classes. We go from 60 percent full to 80 percent full.
+>
+> Now Bilal will continue.
 
-Here is our main process as a simple BPMN-style model with three lanes: trainer, member and system.
+---
 
-The trainer plans a class and the schedule is published. The member books a place, and the system sends a reminder before the class. The member checks in at the door with the QR code. After the class, attendance is saved automatically. If a member doesn't show up several times, the system flags it and the reception can contact them.
+## SLIDE 7 – Stakeholders
 
-This directly supports our goals about bookings in the app and higher attendance.
+**On the slide:** Primary · Secondary
 
-## Slide 13 – Success factors and next steps (Bilal, ~40 s)
+**🎤 BILAL:**
+> Thank you, Ali.
+>
+> A stakeholder is anyone who affects the project, or is affected by it.
+>
+> Our **primary** stakeholders work with the system every day.
+> These are the members, the owners and managers, the reception, the trainers, and the IT team.
+>
+> Our **secondary** stakeholders are more on the outside.
+> These are the app developer, the payment company, our suppliers,
+> the authorities that check GDPR, and other gyms.
 
-To succeed, a few things are critical. Members must actually **use the app**. The system must be **easy for staff**. The **payment and door integrations** must be reliable. And we must follow **GDPR**.
+---
 
-For the rest of the course we will build on this. We'll connect the goals to a business model, model the membership and booking processes in BPMN, look at what data we need and how it's protected, and turn the stakeholders' needs into requirements and risks.
+## SLIDE 8 – Organization structure
 
-*(Both:)* Thank you for listening. Do you have any questions?
+**On the slide:** General manager → 4 departments
+
+**🎤 BILAL:**
+> Our company has a simple structure.
+> One general manager leads four departments.
+>
+> **Operations and Facility** has 6 people. They open, clean and take care of the machines.
+> **Training and Classes** has 12 people. These are our trainers.
+> **Sales and Customer Service** has 6 people. This is the reception and marketing.
+> **Finance, HR and IT** has 3 people.
+>
+> The project manager comes from Finance, HR and IT,
+> and works with one person from each department.
+
+---
+
+## SLIDE 9 – Business processes
+
+**On the slide:** 4 core processes · Support processes
+
+**🎤 BILAL:**
+> We have two types of processes.
+> **Core processes** give value to the members.
+> **Support processes** keep the company running.
+>
+> Our four core processes are:
+> getting a new member,
+> booking and going to classes,
+> personal training,
+> and running the gym every day.
+>
+> Booking classes has the most problems today.
+> So that is the main focus of the project.
+>
+> Support processes are things like payments, staff schedules, repairs, marketing, and IT.
+
+---
+
+## SLIDE 10 – Perspectives
+
+**On the slide:** Customers · Employees · Managers · Sponsors
+
+**🎤 BILAL:**
+> Different people want different things.
+>
+> **Customers** want easy booking, a fair price, and safe data.
+> **Employees** want less paperwork and clear schedules.
+> **Managers** want fewer people to leave, more profit, and good reports.
+> **Sponsors**, the owners who pay, want the project on time and on budget.
+
+---
+
+## SLIDE 11 – Enterprise architecture
+
+**On the slide:** Business layer · Application layer · Technology layer
+
+**🎤 BILAL:**
+> Here we show the company in three layers.
+>
+> At the top is the **business layer**.
+> This is the members, the staff and the processes.
+>
+> In the middle is the **application layer**.
+> This is the app, the website, the admin system and the reports.
+> It also connects to the payment system and the door system.
+>
+> At the bottom is the **technology layer**.
+> This is the cloud, the database, backups and security.
+>
+> The main idea: everything is in **one system**, not in paper and Excel.
+
+---
+
+## SLIDE 12 – Process: Book and attend a class
+
+**On the slide:** Plan class → Book → Reminder → QR check-in → Attendance saved
+
+**🎤 BILAL:**
+> This is our main process, step by step.
+>
+> **Step 1:** The trainer plans a class.
+> **Step 2:** The member books a place in the app.
+> **Step 3:** The member gets a reminder.
+> **Step 4:** The member checks in at the door with a QR code.
+> **Step 5:** The attendance is saved.
+>
+> If a member does not show up many times, the reception can contact them.
+
+---
+
+## SLIDE 13 – Success factors and next steps
+
+**On the slide:** App use · Easy for staff · Reliable systems · GDPR · Next steps · Questions?
+
+**🎤 BILAL:**
+> For the project to succeed, four things are important.
+> Members must use the app.
+> The system must be easy for the staff.
+> Payments and the door system must work well.
+> And we must follow GDPR.
+>
+> Later in the course we will make process models in BPMN,
+> look at our data, and write requirements and risks.
+
+**🎤 ALI + BILAL:**
+> Thank you for listening. Do you have any questions?
