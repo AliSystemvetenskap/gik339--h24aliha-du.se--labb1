@@ -1,21 +1,21 @@
-digraph HikeFSM {
+digraph TripFSM {
   rankdir=LR;
-  node [shape=circle, fontname="Arial", fontsize=11, width=1.1, fixedsize=true];
+  node [shape=circle, fontname="Arial", fontsize=11, width=1.3, fixedsize=true];
   edge [fontname="Arial", fontsize=9];
   init [shape=point, width=0.15];
-  SUMMIT [shape=doublecircle, width=1.0];
-  DARK [shape=doublecircle, width=1.0];
+  ARRIVED [shape=doublecircle, width=1.2];
+  BROKEN_DOWN [shape=doublecircle, width=1.2, label="BROKEN\nDOWN"];
+  GAS_STATION [label="GAS\nSTATION"];
+  FLAT_TIRE [label="FLAT\nTIRE"];
 
   init -> START;
-  START -> CLIMB [label="game set up"];
-  CLIMB -> CLIMB [label="keep going"];
-  CLIMB -> STORM [label="20% chance"];
-  CLIMB -> REST [label="energy <= 2"];
-  CLIMB -> SUMMIT [label="height >= 100"];
-  CLIMB -> DARK [label="hour >= 15"];
-  REST -> CLIMB [label="rested"];
-  REST -> DARK [label="hour >= 15"];
-  STORM -> CLIMB [label="energy > 2"];
-  STORM -> REST [label="energy <= 2"];
-  STORM -> DARK [label="hour >= 15"];
+  START -> DRIVE [label="trip set up"];
+  DRIVE -> DRIVE [label="keep driving"];
+  DRIVE -> ARRIVED [label="km >= 100"];
+  DRIVE -> BROKEN_DOWN [label="fuel = 0"];
+  DRIVE -> FLAT_TIRE [label="10% chance"];
+  DRIVE -> GAS_STATION [label="fuel < 8 and\n50% chance"];
+  GAS_STATION -> DRIVE [label="tank refilled"];
+  FLAT_TIRE -> DRIVE [label="spare OK (70%)"];
+  FLAT_TIRE -> BROKEN_DOWN [label="spare flat (30%)"];
 }
