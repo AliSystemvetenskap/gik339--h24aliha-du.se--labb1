@@ -1,7 +1,8 @@
 # GIK2NX Distributed computing - Lab 1: FSM game
 # Group members:
-#   - Name Namesson
-#   - Name Namesson
+#   - Ali Hasan
+#   - Bilal Ahmed Adem
+#   - Karim Al Hashoom
 #
 # The game: a hiker agent tries to reach the top of a mountain (100 m)
 # before it gets dark (after 15 hours). Climbing costs energy, resting gives energy
