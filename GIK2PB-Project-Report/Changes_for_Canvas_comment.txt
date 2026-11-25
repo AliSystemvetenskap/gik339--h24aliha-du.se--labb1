@@ -1,0 +1,16 @@
+Revision – Group 4 (Ali Hasan, Bilal Ahmed Adem, Karim Al Hashoom)
+All changed or added paragraphs are highlighted in yellow.
+
+REQUIRED REVISION – LITERATURE
+1. Updated literature review (III.A, new paragraph): new search in November 2026 limited to 2016–2026, new search strings, and a forward citation search ("Cited by") from Iden & Eikebrokk (2013), Jäntti (2009) and Kajko-Mattsson (2002). Nine peer-reviewed sources from 2016–2026 were added: Chen et al. (2019), Eikebrokk & Iden (2017), Galian et al. (2026), Ghazizadeh et al. (2019), Ghosh et al. (2022), Jäntti & Hotti (2016), MacLean & Titah (2023), Notaro et al. (2021), Sarwar et al. (2023).
+2. Background (I.A): new paragraph on recent ITSM and incident research, and recent public-sector studies added to the public-sector paragraph.
+3. Theoretical framework (II.A, II.B, II.C): recent research on ITIL implementation and the IT manager's role, incident reassignment and dependencies as causes of long solving times, and AI-based failure management.
+4. Research gap (I.B): updated. Recent research mainly studies ITSM implementation and incidents in large cloud services; we found no recent qualitative study of Swedish municipalities, and Galian et al. (2026) report a similar lack of municipal ITIL 4 studies.
+5. Discussion (V.A, new paragraph "Comparison with recent research") and Conclusion (V.C): recent research supports our RQ1b findings and the conclusion that the incident-to-maintenance link is the weakest part of the chain, but no recent study examines incident handling in a municipality, so the RQ2 finding cannot be confirmed directly.
+6. Abstract and reference list updated accordingly.
+
+GUIDANCE COMMENTS (also addressed)
+7. Interview type (III.C, abstract): the data collection is now described as a structured interview carried out in writing.
+8. Data handling (III.C): the incorrect statement that only the authors keep the answers was removed. Both respondents agreed that their answers are published in Appendix B and that the municipality is named, and they were aware that their roles may be identifiable.
+9. RQ1 split into RQ1a (registration and solving) and RQ1b (perceived factors affecting solving time): I.C, II.D, headings IV.A and IV.B, V.A, V.C, Appendix A and Table C.1.
+10. Layout: the heading is now "D. Objective", and the overlapping text in the Objective (p. 2) and the reference list (p. 6) is fixed.
