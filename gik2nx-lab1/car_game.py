@@ -123,8 +123,19 @@ class CarAgent(Agent):
 
 
 async def main():
-    car = CarAgent("car@localhost", "password")
-    await car.start(auto_register=True)
+    # 127.0.0.1 instead of localhost, on Windows localhost can fail to connect.
+    # Sometimes the first try still fails, so we try a few times.
+    for attempt in range(5):
+        car = CarAgent("car@127.0.0.1", "password")
+        try:
+            await car.start(auto_register=True)
+            break
+        except Exception:
+            print("Could not connect to the server, trying again...")
+            await asyncio.sleep(2)
+    else:
+        print("No connection. Is the server running (spade run)?")
+        return
     await spade.wait_until_finished(car)
 
 
